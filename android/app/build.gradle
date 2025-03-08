@@ -86,9 +86,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.byron_godoy.TestDrawerUno'
+    namespace 'com.byron_godoy.PrimeApp'
     defaultConfig {
-        applicationId 'com.byron_godoy.TestDrawerUno'
+        applicationId 'com.byron_godoy.PrimeApp'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

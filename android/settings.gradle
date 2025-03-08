@@ -21,7 +21,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
   }
 }
 
-rootProject.name = 'TestDrawerUno'
+rootProject.name = 'PrimeApp'
 
 dependencyResolutionManagement {
   versionCatalogs {

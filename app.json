@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TestDrawerUno",
-    "slug": "TestDrawerUno",
+    "name": "PrimeApp",
+    "slug": "PrimeApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.byron_godoy.TestDrawerUno"
+      "package": "com.byron_godoy.PrimeApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
