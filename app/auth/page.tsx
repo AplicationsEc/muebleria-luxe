@@ -1,6 +1,5 @@
-"use client";
-const Bienvenido = () => {
-  return <div>Bienvenido</div>;
-};
+import Login from "@/components/auth/Login";
 
-export default Bienvenido;
+export default async function Home() {
+  return <Login />;
+}

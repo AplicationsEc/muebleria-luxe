@@ -1,14 +1,25 @@
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth/next";
+"use client";
 
-export default async function Home() {
-  const session = await getServerSession();
-  console.log("Test --------------> passed");
-  console.log("session ==>", session);
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import LoadingInicial from "@/components/layout.tsx/LoadingInicial";
 
-  if (session) {
-    redirect("/engine");
-  } else {
-    redirect("/auth");
-  }
+export default function Home() {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (session) {
+        router.push("/engine");
+      } else {
+        router.push("/auth");
+      }
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, [session, router]);
+
+  return <LoadingInicial />;
 }
