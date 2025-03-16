@@ -11,6 +11,7 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        console.log("credentials => ", credentials);
         if (!credentials?.email || !credentials?.password) {
           return null;
         }
@@ -19,11 +20,12 @@ export const authOptions: NextAuthOptions = {
           const response = await axios.post(
             "http://localhost:3000/auth/login",
             {
-              email: credentials.email,
-              password: credentials.password,
+              alias: "admin",
+              password: "admin",
             }
           );
 
+          console.log("Test 0000000000000000000==========> passed");
           const user = response.data;
 
           if (user) {

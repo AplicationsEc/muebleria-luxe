@@ -13,9 +13,9 @@ export function withAuth<P extends object>(
 ) {
   const AuthenticatedComponent = async (props: P & AuthProps) => {
     const session = await getServerSession(authOptions);
-
+    console.log("session => ", session);
     if (!session) {
-      redirect("/auth/login");
+      redirect("/auth");
       return null; // Para evitar errores de renderizado
     }
 

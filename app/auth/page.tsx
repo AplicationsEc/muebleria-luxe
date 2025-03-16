@@ -15,9 +15,19 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useLogin } from "@/services/auth/useLogin";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const { mutate: login } = useLogin();
+
+  const handleLogin = () => {
+    const data = {
+      alias: "admin",
+      password: "admin",
+    };
+    login(data);
+  };
 
   return (
     <div className="flex h-screen min-w-screen items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black p-4">
@@ -82,7 +92,10 @@ export default function LoginForm() {
               </Button>
             </div>
           </div>
-          <Button className="w-full bg-gradient-to-r from-gray-800 to-black hover:from-gray-700 hover:to-gray-900 text-white">
+          <Button
+            className="w-full bg-gradient-to-r from-gray-800 to-black hover:from-gray-700 hover:to-gray-900 text-white"
+            onClick={handleLogin}
+          >
             Ingresar
           </Button>
         </CardContent>

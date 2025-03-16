@@ -1,8 +1,5 @@
 import axios from "axios";
-import { URL_SERVER_API } from "../helper/constants";
-
-const server = URL_SERVER_API;
-
+const server = process.env.NEXT_PUBLIC_API || "http://localhost:3000";
 const defaultOptions = {
   baseURL: server,
   headers: {
@@ -12,6 +9,7 @@ const defaultOptions = {
 };
 
 const _axios = axios.create(defaultOptions);
+console.log("_axios => ", _axios);
 
 const { get, post, put, delete: destroy, patch } = _axios;
 export { get, post, put, destroy, patch };
