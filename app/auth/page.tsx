@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Eye, EyeOff, Lock, User } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,17 +15,23 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useLogin } from "@/services/auth/useLogin";
-
+import { saveToken } from "@/lib/auth";
+import { redirect } from "next/navigation";
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const { mutate: login } = useLogin();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const data = {
       alias: "admin",
       password: "admin",
     };
-    login(data);
+    login(data, {
+      onSuccess: (data) => {
+        saveToken(data.access_token);
+        return redirect("/engine");
+      },
+    });
   };
 
   return (

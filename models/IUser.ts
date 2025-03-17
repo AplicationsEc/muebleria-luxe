@@ -4,5 +4,5 @@ export interface IUserParamsLogin {
 }
 
 export interface IUserLogin {
-  token: string;
+  access_token: string;
 }
