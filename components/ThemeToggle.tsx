@@ -12,7 +12,7 @@ import {
 } from "./ui/dropdown-menu";
 
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Evitar problemas de hidratación

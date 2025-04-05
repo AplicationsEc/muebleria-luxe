@@ -21,8 +21,8 @@ export default async function ProductPage({
 
   return (
     <ShoppingCartProvider>
-      <div className="container mx-auto px-4 py-8">
-        <Link href="/" className="inline-flex items-center mb-6">
+      <div className="container max-h-[90vh] px-4 py-8">
+        <Link href="/muebleria-luxe" className="inline-flex items-center mb-6">
           <Button variant="ghost" size="sm" className="gap-1">
             <ArrowLeft className="h-4 w-4" />
             Volver al catálogo
@@ -30,7 +30,7 @@ export default async function ProductPage({
         </Link>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="relative aspect-square overflow-hidden rounded-lg bg-muted">
+          <div className="relative aspect-square overflow-hidden rounded-lg bg-muted max-h-[75vh]">
             {product.imagenUrl ? (
               <Image
                 src={product.imagenUrl || "/placeholder.svg"}
@@ -45,7 +45,7 @@ export default async function ProductPage({
                 alt="Imagen no disponible"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 508px) 80vw, 50vw"
               />
             )}
           </div>
