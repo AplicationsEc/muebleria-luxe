@@ -6,7 +6,6 @@ import {
   provideGlobalGridOptions,
   themeBalham,
 } from "ag-grid-community";
-import { SessionProvider } from "next-auth/react";
 import { QueryParamProvider } from "use-query-params";
 import NextAdapterApp from "next-query-params/app";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -19,13 +18,11 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   });
 
   return (
-    <SessionProvider>
-      <QueryParamProvider adapter={NextAdapterApp}>
-        <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools initialIsOpen={false} />
-          {children}
-        </QueryClientProvider>
-      </QueryParamProvider>
-    </SessionProvider>
+    <QueryParamProvider adapter={NextAdapterApp}>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        {children}
+      </QueryClientProvider>
+    </QueryParamProvider>
   );
 }

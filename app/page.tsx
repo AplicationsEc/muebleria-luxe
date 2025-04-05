@@ -2,16 +2,16 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import LoadingInicial from "@/components/layout.tsx/LoadingInicial";
+import { useCurrentLogin } from "@/services/auth/useCurrentLogin";
 
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: currentLogin } = useCurrentLogin();
   const router = useRouter();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (session) {
+      if (currentLogin && currentLogin.length > 0) {
         router.push("/engine");
       } else {
         router.push("/auth");
@@ -19,7 +19,7 @@ export default function Home() {
     }, 2000);
 
     return () => clearTimeout(timeout);
-  }, [session, router]);
+  }, [currentLogin, router]);
 
   return <LoadingInicial />;
 }

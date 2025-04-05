@@ -9,7 +9,7 @@ const defaultOptions = {
 };
 
 const _axios = axios.create(defaultOptions);
-console.log("_axios => ", _axios);
+// console.log("_axios => ", _axios);
 
 const { get, post, put, delete: destroy, patch } = _axios;
 export { get, post, put, destroy, patch };
