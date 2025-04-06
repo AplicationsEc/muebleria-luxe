@@ -1,10 +1,10 @@
 "use client";
 
-import { getProducts } from "@/api/productos";
 import { IProducto } from "@/models/Producto/IProducto";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import { useProudctosList } from "@/services/productos/useProudctosList";
 
 export default function ProductGrid() {
   const [products, setProducts] = useState<IProducto[]>([]);
@@ -19,12 +19,13 @@ export default function ProductGrid() {
   const maxPrice = searchParams.get("precioMax")
     ? Number.parseFloat(searchParams.get("precioMax")!)
     : undefined;
+  const { data: dataProductos } = useProudctosList();
 
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const data = await getProducts();
+        const data = dataProductos ?? [];
 
         // Filter products based on search parameters
         let filteredProducts = [...data];
@@ -67,7 +68,7 @@ export default function ProductGrid() {
     };
 
     fetchProducts();
-  }, [category, query, minPrice, maxPrice]);
+  }, [category, query, minPrice, maxPrice, dataProductos]);
 
   if (loading) {
     return <div className="text-center py-10">Cargando productos...</div>;

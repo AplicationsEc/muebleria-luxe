@@ -4,7 +4,7 @@ export interface IProducto {
   descripcion?: string;
   precio: number;
   imagenUrl?: string;
-  categoria: string;
+  categoria?: string;
   stock: number;
   marca?: string;
   modelo?: string;
@@ -13,4 +13,11 @@ export interface IProducto {
   alto?: number;
   ancho?: number;
   largo?: number;
+  activo?: boolean;
+  descuento?: number;
+  favorito?: boolean;
+  carrito?: boolean;
+  color1?: string;
+  color2?: string;
+  color3?: string;
 }

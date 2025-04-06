@@ -3,9 +3,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { getProductById } from "@/api/productos";
 import { ShoppingCartProvider } from "@/components/ShoppingCartProvider";
 import { AddToCartButton } from "@/components/AddToCartButton";
+import { productosApi } from "@/api/productos";
 
 export default async function ProductPage({
   params,
@@ -13,7 +13,7 @@ export default async function ProductPage({
   params: { id: string };
 }) {
   const productId = parseInt(params.id);
-  const product = await getProductById(productId);
+  const product = await productosApi.getProductoById(productId);
 
   if (!product) {
     notFound();
@@ -104,6 +104,16 @@ export default async function ProductPage({
                       {product.alto && `Alto: ${product.alto}cm`}
                       {product.ancho && ` Ancho: ${product.ancho}cm`}
                       {product.largo && ` Largo: ${product.largo}cm`}
+                    </p>
+                  </div>
+                )}
+                {(product.color1 || product.color2 || product.color3) && (
+                  <div>
+                    <p className="text-sm text-muted-foreground">Colores</p>
+                    <p>
+                      {product.color1 && `${product.color1}`}
+                      {product.color2 && ` - ${product.color2}`}
+                      {product.color3 && ` - ${product.color3}`}
                     </p>
                   </div>
                 )}

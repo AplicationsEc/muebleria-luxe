@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Separator } from "@/components/ui/separator";
-import { getCategories } from "@/api/productos";
+import { productosApi } from "@/api/productos";
 
 export function SearchFilters() {
   const router = useRouter();
@@ -31,7 +31,7 @@ export function SearchFilters() {
 
   useEffect(() => {
     const loadCategories = async () => {
-      const categoriesList = await getCategories();
+      const categoriesList = await productosApi.getCategories();
       setCategories(categoriesList);
     };
 

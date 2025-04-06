@@ -6,6 +6,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { IProducto } from "@/models/Producto/IProducto";
 import { AddToCartButton } from "./AddToCartButton";
+import { configApp } from "@/helper/constants";
 
 interface ProductCardProps {
   product: IProducto;
@@ -14,12 +15,15 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="overflow-hidden transition-all hover:shadow-md">
-      <Link href={`/productos/${product.id}`} className="block">
+      <Link
+        href={`${configApp.baseUrl}/productos/${product.id}`}
+        className="block"
+      >
         <div className="aspect-square relative overflow-hidden bg-muted">
           {product.imagenUrl ? (
             <Image
               src={product.imagenUrl || "/placeholder.svg"}
-              alt={product.nombre}
+              alt={""}
               fill
               className="object-cover transition-transform hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
