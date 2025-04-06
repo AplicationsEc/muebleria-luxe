@@ -10,15 +10,15 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (currentLogin && currentLogin.length > 0) {
-        router.push("/engine");
-      } else {
-        router.push("/auth");
-      }
-    }, 2000);
-
-    return () => clearTimeout(timeout);
+    // const timeout = setTimeout(() => {
+    //   if (currentLogin && currentLogin.length > 0) {
+    //     router.push("/engine");
+    //   } else {
+    //     router.push("/auth");
+    //   }
+    // }, 2000);
+    router.push("/muebleria-luxe");
+    // return () => clearTimeout(timeout);
   }, [currentLogin, router]);
 
   return <LoadingInicial />;
