@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main] # o la rama principal que uses
+    branches: [master] # o la rama principal que uses
 
 permissions:
   contents: write
