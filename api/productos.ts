@@ -6,7 +6,7 @@ const baseUrl = URL_SERVER_API;
 export const productosApi = {
   getProductos: async () => {
     try {
-      const response = await fetch(baseUrl + "/productos.html");
+      const response = await fetch(baseUrl);
       let res: IProducto[] = [];
       const text = await response.text();
       // Extraer contenido del <pre>
@@ -34,7 +34,7 @@ export const productosApi = {
   },
   getProductoById: async (id: number) => {
     try {
-      const response = await fetch(baseUrl + "/productos.html");
+      const response = await fetch(baseUrl);
       let res: IProducto | null = null;
       const text = await response.text();
       // Extraer contenido del <pre>
@@ -63,7 +63,7 @@ export const productosApi = {
   },
   getCategories: async () => {
     try {
-      const response = await fetch(baseUrl + "/productos.html");
+      const response = await fetch(baseUrl);
       let res: IProducto[] = [];
       const text = await response.text();
       // Extraer contenido del <pre>
