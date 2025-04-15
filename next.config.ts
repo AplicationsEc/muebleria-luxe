@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export", // 👈 Esto debe estar activo
+  // Exportación estática: genera HTML + assets en la carpeta /out
+  output: "export",
+
+  // Prefijos para que funcione correctamente en GitHub Pages
+  basePath: "/PrimeApp",
+  assetPrefix: "/PrimeApp",
+  // Permitir imágenes remotas desde raw.githubusercontent.com
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -10,8 +17,6 @@ const nextConfig = {
       },
     ],
   },
-  basePath: "/PrimeApp",
-  assetPrefix: "/PrimeApp",
 };
 
 export default nextConfig;
