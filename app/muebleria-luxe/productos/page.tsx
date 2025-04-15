@@ -7,12 +7,14 @@ import { ShoppingCartProvider } from "@/components/ShoppingCartProvider";
 import { AddToCartButton } from "@/components/AddToCartButton";
 import { productosApi } from "@/api/productos";
 import { useEffect, useState } from "react";
-import { NumberParam, useQueryParams } from "use-query-params";
 import { IProducto } from "@/models/Producto/IProducto";
+import { useSearchParams } from "next/navigation";
 
 const ProductPage = () => {
-  const [queryParams] = useQueryParams({ proId: NumberParam });
-  const { proId } = queryParams;
+  const searchParams = useSearchParams();
+  const proIdParam = searchParams.get("proId");
+  const proId = proIdParam ? parseInt(proIdParam, 10) : null;
+
   const [product, setProduct] = useState<IProducto | null>(null);
 
   useEffect(() => {

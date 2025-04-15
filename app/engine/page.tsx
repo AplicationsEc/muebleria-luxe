@@ -1,4 +1,3 @@
-import { withAuth } from "../lib/withAuth";
 const Home = () => {
   return (
     <div className="flex h-screen bg-gray-100">
@@ -7,4 +6,4 @@ const Home = () => {
   );
 };
 
-export default withAuth(Home);
+export default Home;

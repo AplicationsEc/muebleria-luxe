@@ -6,8 +6,6 @@ import {
   provideGlobalGridOptions,
   themeBalham,
 } from "ag-grid-community";
-import { QueryParamProvider } from "use-query-params";
-import NextAdapterApp from "next-query-params/app";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const queryClient = new QueryClient();
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -18,11 +16,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   });
 
   return (
-    <QueryParamProvider adapter={NextAdapterApp}>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        {children}
-      </QueryClientProvider>
-    </QueryParamProvider>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      {children}
+    </QueryClientProvider>
   );
 }
