@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  //output: "export", // Habilita exportación estática
+  output: "export", // 👈 Esto debe estar activo
   images: {
     remotePatterns: [
       {
@@ -10,8 +10,8 @@ const nextConfig = {
       },
     ],
   },
-  basePath: "/PrimeApp", // importante para que los paths funcionen
-  assetPrefix: "/PrimeApp", // para que cargue los assets correctamente
+  basePath: "/PrimeApp",
+  assetPrefix: "/PrimeApp",
 };
 
 export default nextConfig;
