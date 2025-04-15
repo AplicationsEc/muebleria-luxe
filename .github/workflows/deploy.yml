@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main] # o la rama principal que uses
 
 permissions:
   contents: write
@@ -10,6 +10,7 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build and export static site
+      - name: Build static site
         run: npm run build
 
       - name: Deploy to GitHub Pages
