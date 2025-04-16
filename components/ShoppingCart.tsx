@@ -1,6 +1,6 @@
 "use client";
 
-import { X, ShoppingCartIcon as CartIcon } from "lucide-react";
+import { ShoppingCartIcon as CartIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,7 @@ export function ShoppingCart() {
     cartItems,
     cartQuantity,
     addToCart,
+    openCart,
     removeFromCart,
   } = useShoppingCart();
 
@@ -30,12 +31,20 @@ export function ShoppingCart() {
   );
 
   return (
-    <Sheet open={isOpen} onOpenChange={closeCart}>
+    <Sheet
+      open={isOpen}
+      onOpenChange={(open) => {
+        console.log("🌀 onOpenChange triggered:", open);
+        if (!open) closeCart();
+        else openCart(); // <-- asegura que se mantiene abierto
+      }}
+    >
       <SheetTrigger asChild>
         <Button
           variant="outline"
           size="icon"
           className="fixed bottom-4 right-4 h-12 w-12 rounded-full shadow-lg md:bottom-8 md:right-8 z-50"
+          onClick={openCart}
         >
           <div className="relative">
             <CartIcon className="h-5 w-5" />
@@ -48,13 +57,10 @@ export function ShoppingCart() {
         </Button>
       </SheetTrigger>
 
-      <SheetContent className="flex w-full flex-col sm:max-w-lg">
+      <SheetContent className="flex w-full flex-col sm:max-w-lg p-5">
         <SheetHeader className="px-1">
           <div className="flex items-center justify-between">
             <SheetTitle>Carrito de compras</SheetTitle>
-            <Button variant="ghost" size="icon" onClick={closeCart}>
-              <X className="h-4 w-4" />
-            </Button>
           </div>
         </SheetHeader>
 

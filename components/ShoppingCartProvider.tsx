@@ -120,7 +120,6 @@ export function ShoppingCartProvider({ children }: { children: ReactNode }) {
       }
     });
   }
-
   return (
     <ShoppingCartContext.Provider
       value={{
