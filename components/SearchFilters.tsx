@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { productosApi } from "@/api/productos";
 
 export function SearchFilters() {
-  const router = useRouter();
+  //const router = useRouter();
   const searchParams = useSearchParams();
 
   const [categories, setCategories] = useState<string[]>([]);
@@ -66,14 +66,14 @@ export function SearchFilters() {
     params.set("precioMin", priceRange[0].toString());
     params.set("precioMax", priceRange[1].toString());
 
-    router.push(`/?${params.toString()}`);
+    //router.push(`/?${params.toString()}`);
   };
 
   const clearFilters = () => {
     setSearchQuery("");
     setSelectedCategory("");
     setPriceRange([0, 1000]);
-    router.push("/");
+    //router.push("/");
   };
 
   return (
