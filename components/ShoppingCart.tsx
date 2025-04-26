@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { useShoppingCart } from "./ShoppingCartProvider";
 import { ModalFinalizarCompra } from "./Compras/Modal/ModalFinalizarCompra";
 import { useState } from "react";
+import { configApp } from "@/helper/constants";
 
 export function ShoppingCart() {
   const {
@@ -33,13 +34,45 @@ export function ShoppingCart() {
   );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleConfirm = (datos: {
+
+  const handleConfirm = async (datos: {
     nombre: string;
     email?: string;
     telefono?: string;
   }) => {
-    console.log("Datos recibidos:", datos);
-    setIsModalOpen(false);
+    const usuAgente = localStorage.getItem("usuAgente");
+
+    // Lista de IDs de productos
+    const idsProductos = cartItems.map((item) => item.product.id);
+
+    // Armamos la URL
+    const baseUrl = configApp.urlAppProd + "?usu_agente=" + usuAgente;
+    const idsArrayString = `[${idsProductos.join(",")}]`; // ej: [1,2,3,56]
+
+    const urlConProductos = `${baseUrl}?usu_agente=${
+      usuAgente || ""
+    }&ids=${encodeURIComponent(idsArrayString)}`;
+
+    // Ahora armamos el mensaje que incluye esa URL
+    const mensaje = `
+    ${configApp.nombreEmpresa}
+    Hola, soy ${datos.nombre}.
+    Email: ${datos.email || "No proporcionado"}.
+    Teléfono: ${datos.telefono || "No proporcionado"}.
+    Agente: ${usuAgente || "No asignado"}.
+    Estoy interesado en los productos:
+    ${urlConProductos}
+    `;
+
+    // Codificar el mensaje para URL de WhatsApp
+    const mensajeCodificado = encodeURIComponent(mensaje);
+
+    // Número de destino sacado del ENV
+    const telefonoDestino = process.env.NEXT_PUBLIC_WHATSAPP_NUMERO; // ejemplo: "593987159087"
+
+    const urlWhatsapp = `https://wa.me/${telefonoDestino}?text=${mensajeCodificado}`;
+
+    window.open(urlWhatsapp, "_blank");
   };
 
   return (

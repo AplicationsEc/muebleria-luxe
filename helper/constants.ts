@@ -7,4 +7,6 @@ export const configApp = {
   telefono: "+56912345678",
   email: "sinemail@gmail.com",
   baseUrl: "muebleria-luxe",
+  whatsapp: "593987159087",
+  urlAppProd: "https://felipealmespa.github.io/PrimeApp/muebleria-luxe",
 };

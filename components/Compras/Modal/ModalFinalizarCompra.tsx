@@ -42,11 +42,8 @@ export function ModalFinalizarCompra({
       toast.error("El nombre es requerido");
       return;
     }
-    if (email.length === 0 && telefono.length === 0) {
-      console.log("entro a isNil");
-      toast.error(
-        "Debe proporcionar al menos un correo electrónico o teléfono"
-      );
+    if (telefono.length === 0) {
+      toast.error("Debe proporcionar al menos un teléfono");
       return;
     }
 
@@ -80,7 +77,7 @@ export function ModalFinalizarCompra({
             />
           </div>
 
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <Label htmlFor="email">Correo electrónico</Label>
             <Input
               id="email"
@@ -89,7 +86,7 @@ export function ModalFinalizarCompra({
               onChange={(e) => setEmail(e.target.value)}
               placeholder="ejemplo@correo.com"
             />
-          </div>
+          </div> */}
 
           <div className="space-y-2">
             <Label htmlFor="telefono">Teléfono</Label>
