@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { IProducto } from "@/models/Producto/IProducto";
 import { AddToCartButton } from "./AddToCartButton";
@@ -22,7 +21,10 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
   return (
     <div className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-1 rounded-md">
-      <div className="aspect-square relative overflow-hidden bg-muted cursor-pointer rounded-tl-md rounded-tr-md">
+      <div
+        className="aspect-square relative overflow-hidden bg-muted cursor-pointer rounded-tl-md rounded-tr-md"
+        onClick={goToPage}
+      >
         {product.imagenUrl ? (
           <Image
             src={product.imagenUrl || "/placeholder.svg"}
