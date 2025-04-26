@@ -46,7 +46,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           Agotado
         </Badge>
       )}
-      <div className="space-y-1">
+      <div className="space-y-1 p-2">
         <Link href={`/productos/${product.id}`} className="block">
           <h3 className="font-medium line-clamp-1 hover:underline">
             {product.nombre}

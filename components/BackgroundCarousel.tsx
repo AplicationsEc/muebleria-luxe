@@ -27,7 +27,7 @@ export function BackgroundCarousel() {
           alt={`fondo-${index}`}
           fill
           className={`object-cover transition-opacity duration-1000 ${
-            index === current ? "opacity-100" : "opacity-0"
+            index === current ? "opacity-58" : "opacity-0"
           }`}
         />
       ))}

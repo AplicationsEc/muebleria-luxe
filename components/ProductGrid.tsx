@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { useProudctosList } from "@/services/productos/useProudctosList";
+import { BackgroundCarousel } from "./BackgroundCarousel";
 
 export default function ProductGrid() {
   const [products, setProducts] = useState<IProducto[]>([]);
@@ -92,6 +93,7 @@ export default function ProductGrid() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <BackgroundCarousel />
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
