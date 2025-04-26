@@ -97,7 +97,7 @@ export function SearchFilters() {
             <Input
               type="search"
               placeholder="Buscar productos..."
-              className="pl-8"
+              className="pl-8 border-1 border-white"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -117,7 +117,7 @@ export function SearchFilters() {
             <Button
               key={category}
               variant={selectedCategory === category ? "default" : "outline"}
-              className="w-full justify-start"
+              className="w-full justify-start border-1 border-white"
               onClick={() => handleCategoryChange(category)}
             >
               {category}
@@ -147,7 +147,11 @@ export function SearchFilters() {
         />
       </div>
 
-      <Button variant="outline" className="w-full" onClick={clearFilters}>
+      <Button
+        variant="outline"
+        className="w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90"
+        onClick={clearFilters}
+      >
         Limpiar filtros
       </Button>
     </div>

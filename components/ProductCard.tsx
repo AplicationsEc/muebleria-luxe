@@ -21,11 +21,8 @@ export default function ProductCard({ product }: ProductCardProps) {
     router.push(`${configApp.baseUrl}/productos?proId=${product.id}`);
   };
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-md">
-      <div
-        onClick={goToPage}
-        className="aspect-square relative overflow-hidden bg-muted"
-      >
+    <div className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-1 rounded-md">
+      <div className="aspect-square relative overflow-hidden bg-muted cursor-pointer rounded-tl-md rounded-tr-md">
         {product.imagenUrl ? (
           <Image
             src={product.imagenUrl || "/placeholder.svg"}
@@ -43,28 +40,24 @@ export default function ProductCard({ product }: ProductCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         )}
-        {product.stock <= 0 && (
-          <Badge variant="destructive" className="absolute top-2 right-2">
-            Agotado
-          </Badge>
-        )}
       </div>
-      <CardContent className="p-4">
-        <div className="space-y-1">
-          <Link href={`/productos/${product.id}`} className="block">
-            <h3 className="font-medium line-clamp-1 hover:underline">
-              {product.nombre}
-            </h3>
-          </Link>
-          {product.marca && (
-            <p className="text-sm text-muted-foreground">{product.marca}</p>
-          )}
-          <p className="font-bold">${product.precio.toFixed(2)}</p>
-        </div>
-      </CardContent>
-      <CardFooter className="p-4 pt-0">
-        <AddToCartButton product={product} compact />
-      </CardFooter>
-    </Card>
+      {product.stock <= 0 && (
+        <Badge variant="destructive" className="absolute top-2 right-2">
+          Agotado
+        </Badge>
+      )}
+      <div className="space-y-1">
+        <Link href={`/productos/${product.id}`} className="block">
+          <h3 className="font-medium line-clamp-1 hover:underline">
+            {product.nombre}
+          </h3>
+        </Link>
+        {product.marca && (
+          <p className="text-sm text-muted-foreground">{product.marca}</p>
+        )}
+        <p className="font-bold">${product.precio.toFixed(2)}</p>
+      </div>
+      <AddToCartButton product={product} compact />
+    </div>
   );
 }
