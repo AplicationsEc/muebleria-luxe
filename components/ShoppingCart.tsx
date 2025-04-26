@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { useShoppingCart } from "./ShoppingCartProvider";
+import { ModalFinalizarCompra } from "./Compras/Modal/ModalFinalizarCompra";
+import { useState } from "react";
 
 export function ShoppingCart() {
   const {
@@ -29,6 +31,16 @@ export function ShoppingCart() {
     (total, item) => total + item.product.precio * item.quantity,
     0
   );
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleConfirm = (datos: {
+    nombre: string;
+    email?: string;
+    telefono?: string;
+  }) => {
+    console.log("Datos recibidos:", datos);
+    setIsModalOpen(false);
+  };
 
   return (
     <Sheet
@@ -159,7 +171,11 @@ export function ShoppingCart() {
                   <span>${totalPrice.toFixed(2)}</span>
                 </div>
               </div>
-              <Button className="w-full" size="lg">
+              <Button
+                className="w-full"
+                size="lg"
+                onClick={() => setIsModalOpen(true)}
+              >
                 Finalizar compra
               </Button>
               <Button variant="outline" className="w-full" onClick={closeCart}>
@@ -169,6 +185,14 @@ export function ShoppingCart() {
           </>
         )}
       </SheetContent>
+      {isModalOpen && (
+        <ModalFinalizarCompra
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onConfirm={handleConfirm}
+          total={totalPrice}
+        />
+      )}
     </Sheet>
   );
 }

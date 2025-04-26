@@ -7,6 +7,7 @@ import {
   themeBalham,
 } from "ag-grid-community";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "sonner";
 const queryClient = new QueryClient();
 export default function Providers({ children }: { children: React.ReactNode }) {
   ModuleRegistry.registerModules([AllCommunityModule]);
@@ -19,6 +20,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       {children}
+      <Toaster />
     </QueryClientProvider>
   );
 }
