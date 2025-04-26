@@ -14,10 +14,10 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center justify-between">
         <Link href="#" className="flex items-center space-x-2">
           <Image
-            src={configApp.logo + ".png"}
+            src={`${configApp.logo}.png`}
             alt="Logo"
-            width={32}
-            height={32}
+            width={56}
+            height={56}
           />
           <span className="text-xl font-bold">{configApp.nombreEmpresa}</span>
         </Link>
