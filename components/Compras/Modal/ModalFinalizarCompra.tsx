@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { first, isNil } from "lodash";
 
 interface ModalFinalizarCompraProps {
   isOpen: boolean;
@@ -32,7 +31,7 @@ export function ModalFinalizarCompra({
   total,
 }: ModalFinalizarCompraProps) {
   const [nombre, setNombre] = useState("");
-  const [email, setEmail] = useState<string>("");
+  //const [email, setEmail] = useState<string>("");
   const [telefono, setTelefono] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -49,7 +48,7 @@ export function ModalFinalizarCompra({
 
     onConfirm({
       nombre,
-      email: email || undefined,
+      email: undefined,
       telefono: telefono || undefined,
     });
   };
