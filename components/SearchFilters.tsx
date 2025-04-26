@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { productosApi } from "@/api/productos";
 
 export function SearchFilters() {
-  //const router = useRouter();
+  const router = useRouter();
   const searchParams = useSearchParams();
 
   const [categories, setCategories] = useState<string[]>([]);
@@ -60,20 +60,31 @@ export function SearchFilters() {
     }
 
     if (category) {
+      console.log("category => ", category);
       params.set("categoria", category);
     }
 
     params.set("precioMin", priceRange[0].toString());
     params.set("precioMax", priceRange[1].toString());
-
-    //router.push(`/?${params.toString()}`);
+    // Add the usu_agente parameter from localStorage
+    const usuAgente = localStorage.getItem("usuAgente");
+    if (usuAgente) {
+      params.set("usu_agente", usuAgente);
+    }
+    router.push(`/muebleria-luxe?${params.toString()}`);
   };
 
   const clearFilters = () => {
+    const params = new URLSearchParams();
+
     setSearchQuery("");
     setSelectedCategory("");
     setPriceRange([0, 1000]);
-    //router.push("/");
+    const usuAgente = localStorage.getItem("usuAgente");
+    if (usuAgente) {
+      params.set("usu_agente", usuAgente);
+    }
+    router.push(`/muebleria-luxe?${params.toString()}`);
   };
 
   return (

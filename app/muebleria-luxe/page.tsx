@@ -4,9 +4,24 @@ import ProductGrid from "@/components/ProductGrid";
 import { SearchFilters } from "@/components/SearchFilters";
 import { ShoppingCartProvider } from "@/components/ShoppingCartProvider";
 import { SiteHeader } from "@/components/SiteHeader";
-import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect } from "react";
 
 export default function HomePage() {
+  const searchParams = useSearchParams();
+  const usuAgente = searchParams.get("usu_agente") || "";
+
+  useEffect(() => {
+    if (usuAgente.length > 0) {
+      localStorage.setItem("usuAgente", usuAgente);
+    } else {
+      window.location.href = "/not-found";
+    }
+  }, [usuAgente]);
+
+  if (!usuAgente) {
+    return null;
+  }
   return (
     <ShoppingCartProvider>
       <BackgroundCarousel />

@@ -41,6 +41,9 @@ export default function ProductGrid() {
           filteredProducts = filteredProducts.filter(
             (p) =>
               p.nombre.toLowerCase().includes(searchLower) ||
+              (p.color1 + "").toLowerCase().includes(searchLower) ||
+              (p.color2 + "").toLowerCase().includes(searchLower) ||
+              (p.color3 + "").toLowerCase().includes(searchLower) ||
               (p.descripcion &&
                 p.descripcion.toLowerCase().includes(searchLower)) ||
               (p.marca && p.marca.toLowerCase().includes(searchLower))

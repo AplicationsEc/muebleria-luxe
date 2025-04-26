@@ -31,7 +31,7 @@ export function BackgroundCarousel() {
           }`}
         />
       ))}
-      <div className="absolute inset-0 bg-black/30" />{" "}
+      <div className="absolute inset-0 bg-black/50" />
       {/* opcional: oscurecer fondo */}
     </div>
   );
