@@ -17,7 +17,7 @@ export default function Home() {
     //     router.push("/auth");
     //   }
     // }, 2000);
-    router.push("/muebleria-luxe");
+    router.push("/catalogo");
     // return () => clearTimeout(timeout);
   }, [currentLogin, router]);
 

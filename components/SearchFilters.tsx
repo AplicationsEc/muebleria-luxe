@@ -71,7 +71,7 @@ export function SearchFilters() {
     if (usuAgente) {
       params.set("usu_agente", usuAgente);
     }
-    router.push(`/muebleria-luxe?${params.toString()}`);
+    router.push(`/catalogo?${params.toString()}`);
   };
 
   const clearFilters = () => {
@@ -84,7 +84,7 @@ export function SearchFilters() {
     if (usuAgente) {
       params.set("usu_agente", usuAgente);
     }
-    router.push(`/muebleria-luxe?${params.toString()}`);
+    router.push(`/catalogo?${params.toString()}`);
   };
 
   return (

@@ -8,5 +8,5 @@ export const configApp = {
   email: "sinemail@gmail.com",
   baseUrl: "muebleria-luxe",
   whatsapp: "593987159087",
-  urlAppProd: "https://felipealmespa.github.io/PrimeApp/muebleria-luxe",
+  urlAppProd: "https://felipealmespa.github.io/muebleria-luxe/catalogo",
 };

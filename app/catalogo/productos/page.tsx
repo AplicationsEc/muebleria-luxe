@@ -40,7 +40,7 @@ const ProductPage = () => {
       <ShoppingCartProvider>
         <div className="container max-h-[90vh] px-4 py-8">
           <Link
-            href={`/muebleria-luxe?usu_agente=${usuAgente}`}
+            href={`/catalogo?usu_agente=${usuAgente}`}
             className="inline-flex items-center mb-6"
           >
             <Button variant="ghost" size="sm" className="gap-1">

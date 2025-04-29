@@ -4,8 +4,8 @@ const nextConfig = {
   output: "export",
 
   // Prefijos para que funcione correctamente en GitHub Pages
-  basePath: "/PrimeApp",
-  assetPrefix: "/PrimeApp",
+  basePath: "/muebleria-luxe",
+  assetPrefix: "/muebleria-luxe",
   // Permitir imágenes remotas desde raw.githubusercontent.com
   images: {
     unoptimized: true,
