@@ -68,7 +68,7 @@ export function ShoppingCart() {
     const mensajeCodificado = encodeURIComponent(mensaje);
 
     // Número de destino sacado del ENV
-    const telefonoDestino = process.env.NEXT_PUBLIC_WHATSAPP_NUMERO; // ejemplo: "593987159087"
+    const telefonoDestino = configApp.whatsapp; // ejemplo: "593987159087"
 
     const urlWhatsapp = `https://wa.me/${telefonoDestino}?text=${mensajeCodificado}`;
 

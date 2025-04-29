@@ -4,7 +4,7 @@ export const configApp = {
   nombreEmpresa: "Muebleria Luxe",
   logo: "logo-luxe",
   slogan: "La mejor calidad en muebles",
-  telefono: "+56912345678",
+  telefono: "593987159087",
   email: "sinemail@gmail.com",
   baseUrl: "catalogo",
   whatsapp: "593987159087",
