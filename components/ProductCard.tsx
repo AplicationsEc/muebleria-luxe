@@ -16,7 +16,6 @@ export default function ProductCard({ product }: ProductCardProps) {
   const router = useRouter();
 
   const goToPage = () => {
-    console.log("product.id => ", product.id);
     router.push(`${configApp.baseUrl}/productos?proId=${product.id}`);
   };
   return (

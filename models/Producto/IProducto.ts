@@ -1,14 +1,16 @@
 export interface IProducto {
   id: number;
+  proUuId?: string;
   nombre: string;
   descripcion?: string;
   precio: number;
   imagenUrl?: string;
+  imagenUrlLocal?: string;
   categoria?: string;
   stock: number;
   marca?: string;
   modelo?: string;
-  tamaño?: string;
+  tamano?: string;
   peso?: number;
   alto?: number;
   ancho?: number;
@@ -20,4 +22,9 @@ export interface IProducto {
   color1?: string;
   color2?: string;
   color3?: string;
+  sincronizado?: boolean;
+}
+
+export interface IProductoDBEliminar {
+  id: number;
 }

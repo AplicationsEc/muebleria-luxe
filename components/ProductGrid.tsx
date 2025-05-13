@@ -20,6 +20,7 @@ export default function ProductGrid() {
     ? Number.parseFloat(searchParams.get("precioMax")!)
     : undefined;
   const { data: dataProductos } = useProudctosList();
+  console.log("dataProductos => ", dataProductos);
 
   useEffect(() => {
     const fetchProducts = async () => {

@@ -13,7 +13,9 @@ export const useProudctosList = (
   >
 ) => {
   const getProductos = async () => {
-    return await productosApi.getProductos();
+    const data = await productosApi.getProductos();
+    console.log("data => ssssssssssssaaaaaaa", data);
+    return data;
   };
   return useQuery({
     queryKey: ["productos", "list"],
