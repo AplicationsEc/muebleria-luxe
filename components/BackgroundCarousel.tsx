@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const images = [
-  "https://raw.githubusercontent.com/felipeAlmEspa/luxeApi/main/assets/fondo-1.jpg",
-
-  "https://raw.githubusercontent.com/felipeAlmEspa/luxeApi/main/assets/fondo-2.jpg",
+  "https://raw.githubusercontent.com/felipeAlmEspa/luxeApi/main/fondos/a.jpg",
+  "https://raw.githubusercontent.com/felipeAlmEspa/luxeApi/main/fondos/c.jpg",
+  "https://raw.githubusercontent.com/felipeAlmEspa/luxeApi/main/fondos/d.jpg",
 ];
 
 export function BackgroundCarousel() {

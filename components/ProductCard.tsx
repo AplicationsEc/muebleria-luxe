@@ -16,7 +16,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const router = useRouter();
 
   const goToPage = () => {
-    router.push(`${configApp.baseUrl}/productos?proId=${product.id}`);
+    router.push(`${configApp.baseUrl}/productos?proUuid=${product.proUuId}`);
   };
   return (
     <div className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-1 rounded-md">

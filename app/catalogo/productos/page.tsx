@@ -12,22 +12,21 @@ import { useSearchParams } from "next/navigation";
 
 const ProductPage = () => {
   const searchParams = useSearchParams();
-  const proIdParam = searchParams.get("proId");
-  const proId = proIdParam ? parseInt(proIdParam, 10) : null;
+  const proUuid = searchParams.get("proUuid");
   const usuAgente = localStorage.getItem("usuAgente");
   const [product, setProduct] = useState<IProducto | null>(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
-      if (proId) {
-        const productData = await productosApi.getProductoById(proId);
+      if (proUuid) {
+        const productData = await productosApi.getProductoByUuid(proUuid);
         if (!productData) return; // manejar 404 manualmente si hace falta
         setProduct(productData);
       }
     };
 
     fetchProduct();
-  }, [proId]);
+  }, [proUuid]);
 
   if (!product) {
     return (
@@ -115,10 +114,10 @@ const ProductPage = () => {
                       <p>{product.categoria}</p>
                     </div>
                   )}
-                  {product.tamaño && (
+                  {product.tamano && (
                     <div>
                       <p className="text-sm text-muted-foreground">Tamaño</p>
-                      <p>{product.tamaño}</p>
+                      <p>{product.tamano}</p>
                     </div>
                   )}
                   {(product.alto || product.ancho || product.largo) && (
